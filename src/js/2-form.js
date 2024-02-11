@@ -5,11 +5,11 @@ form.addEventListener("input", (e) => {
         message: form.elements.message.value.trim()
     }
     localStorage.setItem("feedback-form-state", JSON.stringify(newForm));
-    console.log(newForm);
+    // console.log(newForm);
 });
 function formInit() {
     const data = JSON.parse(localStorage.getItem("feedback-form-state"));
-    console.log(data);
+    // console.log(data);
     if (data === null) {
         return
     }
@@ -22,11 +22,12 @@ form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
     event.preventDefault();
-    if (emailInit.value && messageInit.value) {
-        console.log({
-            email: emailInit.value.trim(),
-            message: messageInit.value.trim(),
-        });
+    const newForm = {
+        email: form.elements.email.value.trim(),
+        message: form.elements.message.value.trim()
+    }
+    if (newForm.email && newForm.message) {
+        console.log(newForm);
         localStorage.removeItem("feedback-form-state");
         form.reset();
         // emailInnit.value = "";
