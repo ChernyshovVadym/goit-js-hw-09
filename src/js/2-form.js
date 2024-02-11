@@ -18,7 +18,7 @@ function formInit() {
 }
 formInit()
 
-formInit.addEventListener("submit", onFormSubmit);
+form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
     event.preventDefault();
@@ -28,8 +28,9 @@ function onFormSubmit(event) {
             message: messageInit.value.trim(),
         });
         localStorage.removeItem("feedback-form-state");
-        emailInnit.value = "";
-        messageInnit.value = "";
+        form.reset();
+        // emailInnit.value = "";
+        // messageInnit.value = "";
     } else {
         alert("All form fields must be filled in");
     }
